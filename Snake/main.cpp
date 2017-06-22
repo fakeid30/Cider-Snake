@@ -1,24 +1,42 @@
 #include <SFML/Graphics.hpp>
+#include <time.h>
+
+using namespace sf;
+
+int M = 30, N = 20;
+int size = 16;
+int w = size*N;
+int h = size*M;
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
+	RenderWindow window(VideoMode(w, h), "Cider Snake!");
+
+	Texture t1, t2;
+	t1.loadFromFile("images/white.png");
+	t2.loadFromFile("images/red.png");
+
+	Sprite sprite1(t1);
+	Sprite sprite2(t2);
 
 	while (window.isOpen())
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
+		Event e;
+		while (window.pollEvent(e))
 		{
-			if (event.type == sf::Event::Closed)
+			if (e.type == Event::Closed)
 				window.close();
 		}
 
+		// draw //
 		window.clear();
-		window.draw(shape);
+		for (int i = 0; i < N; i++)
+			for (int j = 0; j < M; j++)
+			{
+				sprite1.setPosition(i*size, j*size);
+				window.draw(sprite1);
+			}
+
 		window.display();
 	}
-
-	return 0;
 }
