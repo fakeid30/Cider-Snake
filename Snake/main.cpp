@@ -3,10 +3,10 @@
 
 using namespace sf;
 
-int M = 30, N = 20;
-int size = 16;
-int w = size*N;
-int h = size*M;
+int M{ 30 }, N{ 20 };
+int size{ 16 };
+int w{ size * N };
+int h{ size * M };
 
 int main()
 {
@@ -30,8 +30,8 @@ int main()
 
 		// draw //
 		window.clear();
-		for (int i = 0; i < N; i++)
-			for (int j = 0; j < M; j++)
+		for (auto i{ 0 }; i < N; i++)
+			for (auto j{ 0 }; j < M; j++)
 			{
 				sprite1.setPosition(i*size, j*size);
 				window.draw(sprite1);
